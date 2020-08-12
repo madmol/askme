@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :questions
 
+  before_validation :username_to_downcase
+
   validates :email, :username, presence: true, uniqueness: true
   validates :username, length: { maximum: 40 }
 
@@ -15,7 +17,7 @@ class User < ApplicationRecord
   validates :username, format: { with: /\A\w+\z/ }
 
   validates :password, presence: true, on: :create
-  validates_confirmation_of :password
+  validates :password, confirmation: true
 
   before_save :encrypt_password
 
@@ -46,6 +48,8 @@ class User < ApplicationRecord
     password_hash.unpack('H*')[0]
   end
 
+  private
+
   def encrypt_password
     if password.present?
       self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
@@ -55,5 +59,9 @@ class User < ApplicationRecord
           )
       )
     end
+  end
+
+  def username_to_downcase
+    self.username.downcase! if self.username
   end
 end
