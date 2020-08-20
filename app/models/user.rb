@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :questions
 
-  before_validation :username_to_downcase
+  before_validation :username_to_downcase, :email_to_downcase
 
   validates :email, :username, presence: true, uniqueness: true
   validates :username, length: { maximum: 40 }
@@ -62,6 +62,10 @@ class User < ApplicationRecord
   end
 
   def username_to_downcase
-    self.username.downcase! if self.username
+    username.downcase! if username
+  end
+
+  def email_to_downcase
+    email.downcase! if email
   end
 end
