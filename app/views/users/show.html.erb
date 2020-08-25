@@ -41,6 +41,12 @@
 <div class="column-3-4">
   <div class="user-questions buffer-both">
     <div class="questions-list">
+      <div class="question question-content">
+        <div class="question-text text-lead">
+          Всего задано: <%= @questions.size %>
+          <%= word_declension(@questions.size, 'вопрос', 'вопроса', 'вопросов') %>
+        </div>
+      </div>
       <% @questions.each do |question| %>
         <%= render partial: 'questions/question', object: question %>
       <% end %>
