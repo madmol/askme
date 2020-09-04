@@ -19,6 +19,13 @@ module ApplicationHelper
     end
   end
 
+  def questions_stat
+    total = @questions.size
+    answered = @questions.select { |q| q.answer.present? }.size
+    unanswered = total - answered
+    { unanswered: unanswered, answered: answered, total: total }
+  end
+
   def fa_icon(icon_class)
     content_tag 'span', '', class: "fa fa-#{icon_class}"
   end

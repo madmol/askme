@@ -47,8 +47,21 @@
     <div class="questions-list">
       <div class="question question-content">
         <div class="question-text text-lead">
-          Всего задано: <%= @questions.size %>
-          <%= word_declension(@questions.size, 'вопрос', 'вопроса', 'вопросов') %>
+          <%= link_to fa_icon('question-circle')%>
+          <%#= @questions.size %>
+          <% q_stat = questions_stat %>
+          <%= q_stat[:total] %>
+          <%= word_declension(q_stat[:total], 'вопрос', 'вопроса', 'вопросов') %>
+
+          <%= link_to fa_icon('envelope')%>
+          <%#= @questions.size %>
+          <%= q_stat[:unanswered] %>
+          <%= word_declension(q_stat[:unanswered], 'вопрос', 'вопроса', 'вопросов') %>
+
+          <%= link_to fa_icon('check')%>
+          <%#= @questions.size %>
+          <%= q_stat[:answered] %>
+          <%= word_declension(q_stat[:answered], 'вопрос', 'вопроса', 'вопросов') %>
         </div>
       </div>
       <% @questions.each do |question| %>
