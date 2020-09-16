@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   validates :password, presence: true, on: :create
   validates :password, confirmation: true
+  validates :color, presence: true
 
   before_save :encrypt_password
 
