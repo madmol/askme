@@ -43,15 +43,17 @@
       </div>
 
       <div class="form-field">
-        <%= f.label :color %><br>
-        <select name="background" id="bgcolor">
-          <option value="1">Orange</option>
-          <option value="2">Green</option>
-          <option value="3">Blue</option>
-          <option value="4">Pink</option>
-          <option value="5">Yellow</option>
-          <option value="6">White</option>
-        </select>
+        <%= select_tag(:color, options_for_select(
+            [
+              ['Оранжевый', '#FF0000'],
+              ['Зеленый', '#008000'],
+              ['Голубой', '#0000FF'],
+              ['Фиолетовый', '#800080'],
+              ['Желтый', '#FFFF00'],
+              ['Белый', '#FFFFFF'],
+              ['По умолчанию', '#005A55']
+            ], '#005A55'
+        )) %>
       </div>
 
       <div class="form-field">
