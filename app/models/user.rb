@@ -3,6 +3,14 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
+  COLORS = {
+    'Красный' => '#FF0000',
+    'Зеленый' => '#00FF00',
+    'Голубой' => '#0000FF',
+    'Фиолетовый' => '#800080',
+    'Желтый' => '#FFFF00',
+    'Дефолтный' => '#005A55'
+  }
 
   attr_accessor :password
 
@@ -18,7 +26,8 @@ class User < ApplicationRecord
 
   validates :password, presence: true, on: :create
   validates :password, confirmation: true
-  validates :color, presence: true
+  validates :color, inclusion:
+    { in: %w[#FF0000 #00FF00 #0000FF #800080 #FFFF00 #005A55] }
 
   before_save :encrypt_password
 
