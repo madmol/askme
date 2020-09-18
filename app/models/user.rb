@@ -26,8 +26,7 @@ class User < ApplicationRecord
 
   validates :password, presence: true, on: :create
   validates :password, confirmation: true
-  validates :color, inclusion:
-    { in: %w[#FF0000 #00FF00 #0000FF #800080 #FFFF00 #005A55] }
+  validates :color, inclusion: { in: COLORS.values }
 
   before_save :encrypt_password
 
