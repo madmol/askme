@@ -62,8 +62,11 @@
       </div>
     <% end %>
 
-      <div class="form-action buffer-top">
-        <%= submit_tag 'Удалить профиль', class: 'button button-dark button-small' %>
+      <div class="buffer-top">
+        <%= link_to "Удалить профиль", user_path(@user),
+                    method: :delete,
+                    data: { confirm: 'Подтверждаете удаление профиля?' },
+                    class: 'button button-dark button-small' %>
       </div>
 
     <%# Подробнее про помощники для создания форм: %>
