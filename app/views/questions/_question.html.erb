@@ -19,9 +19,11 @@
 
     <% if question.author_id.present? %>
       <div class="question-author">
-        <% question_author = User.find(question.author_id) %>
-        Автор:
-        <%= link_to "@#{question_author.username}", user_path(question_author) %>
+        <% question_author = User.find_by(id: question.author_id) %>
+        <% if question_author  %>
+          Автор:
+          <%= link_to "@#{question_author.username}", user_path(question_author) %>
+        <% end %>
       </div>
     <% end %>
   </div>
