@@ -16,6 +16,14 @@
     <div class="question-date">
       <%= l(question.created_at, format: :short) %>
     </div>
+
+    <% if question.author_id.present? %>
+      <div class="question-author">
+        <% question_author = User.find(question.author_id) %>
+        Автор:
+        <%= link_to "@#{question_author.username}", user_path(question_author) %>
+      </div>
+    <% end %>
   </div>
 
   <% if question.user == current_user %>
