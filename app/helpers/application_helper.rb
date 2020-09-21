@@ -31,6 +31,10 @@ module ApplicationHelper
   end
 
   def question_author(question)
-    User.find(question.author_id)
+    if question.author && question.author.username
+      link_to "@#{question.author.username}", user_path(question.author)
+    else
+      content_tag(:span, content_tag(:i, 'Аноним'))
+    end
   end
 end
