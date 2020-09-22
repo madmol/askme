@@ -14,14 +14,13 @@
     <% end %>
 
     <div class="question-date">
-      <%= question_author(question) %>
       <%= l(question.created_at, format: :short) %>
     </div>
 
     <div class="question-author">
-
+      <%= question_author(question) %>
     </div>
-  </div>
+d  </div>
 
   <% if question.user == current_user %>
     <div class="question-actions">
