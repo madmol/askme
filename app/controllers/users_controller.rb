@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
+    @hash_tags = HashTag.all.with_questions
   end
 
   def create

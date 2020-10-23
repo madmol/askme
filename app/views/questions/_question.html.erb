@@ -20,6 +20,10 @@
     <div class="question-author">
       <%= question_author(question) %>
     </div>
+
+    <div class="question-hashtag">
+      <%= question.hash_tags.map { |tag| link_to tag.name, hash_tag_path(tag) }.join(', ').html_safe %>
+    </div>
   </div>
 
   <% if question.user == current_user %>

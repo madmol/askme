@@ -46,3 +46,9 @@
     margin-top: 5px;
     font-size: 12px;
 }
+
+.question-hashtag {
+    border-top: 1px solid #D9E6E5;
+    margin-top: 10px;
+    font-size: 10px;
+}
