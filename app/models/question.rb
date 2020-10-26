@@ -3,7 +3,7 @@ class Question < ApplicationRecord
   belongs_to :author, class_name: 'User', required: false
 
   has_many :hash_tag_questions, dependent: :destroy
-  has_many :hash_tags, through: :hash_tag_questions
+  has_many :hash_tags, through: :hash_tag_questions, dependent: :destroy
 
   validates :text, presence: true, length: {maximum: 255}
 
