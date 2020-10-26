@@ -37,4 +37,23 @@ module ApplicationHelper
       content_tag(:span, content_tag(:i, 'Аноним'))
     end
   end
+
+  def show_hash_tags(question)
+    question.hash_tags.map do |tag|
+      link_to "##{tag.name}", hash_tag_path(tag.name)
+    end.join(', ').html_safe
+  end
+
+  def questions_list(questions)
+    questions.map do |question|
+      render partial: 'questions/question', object: question
+    end.join.html_safe
+  end
+
+  def hash_tags_list(hash_tags)
+    hash_tags.map do |tag|
+      link_to "##{tag.name}", hash_tag_path(tag.name)
+    end.join(' ').html_safe
+  end
+
 end

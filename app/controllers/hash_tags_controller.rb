@@ -6,7 +6,8 @@ class HashTagsController < ApplicationController
   end
 
   private
+
   def load_tag
-    @hash_tag = HashTag.find_by(name: "##{params[:name]}")
+    @hash_tag = HashTag.find_by(name: params[:name])
   end
 end

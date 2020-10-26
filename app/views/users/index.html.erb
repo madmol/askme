@@ -11,9 +11,7 @@
     </div>
   <% end %>
   <div class="buffer-both">
-    <% @hash_tags.each do |tag| %>
-      <%= link_to tag.name, hash_tag_path(tag) %>
-    <% end %>
+    <%= hash_tags_list(@hash_tags) %>
   </div>
 </div>
 

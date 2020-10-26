@@ -61,9 +61,7 @@
           <%= word_declension(q_stat[:answered], 'вопрос', 'вопроса', 'вопросов') %>
         </div>
       </div>
-      <% @questions.each do |question| %>
-        <%= render partial: 'questions/question', object: question %>
-      <% end %>
+      <%= questions_list(@questions) %>
     </div>
   </div>
 </div>

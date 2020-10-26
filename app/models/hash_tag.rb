@@ -1,7 +1,7 @@
 class HashTag < ApplicationRecord
-  HASHTAG_REGEX = /#[\wа-яё]+/.freeze
+  HASHTAG_REGEX = /#[[:word:]]+/.freeze
 
-  has_many :hash_tag_questions
+  has_many :hash_tag_questions, dependent: :destroy
   has_many :questions, through: :hash_tag_questions
 
   scope :with_questions, -> { joins(:questions).distinct }
@@ -9,8 +9,4 @@ class HashTag < ApplicationRecord
   before_validation { name&.downcase! }
 
   validates :name, presence: true
-
-  def to_param
-    name[1..-1]
-  end
 end

@@ -1,13 +1,11 @@
 <div class="user-header text-center" style="background-color: #005A55">
   <h1 class="title-medium">
-    Список вопросов для хештега <%= @hash_tag.name %>
+    Список вопросов для хештега #<%= @hash_tag.name %>
   </h1>
 </div>
 
 <div class="user-questions buffer-both">
   <div class="questions-list">
-    <% @questions.each do |question| %>
-      <%= render partial: 'questions/question', object: question %>
-    <% end %>
+    <%= questions_list(@questions) %>
   </div>
 </div>

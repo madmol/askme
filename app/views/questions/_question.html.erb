@@ -22,7 +22,7 @@
     </div>
 
     <div class="question-hashtag">
-      <%= question.hash_tags.map { |tag| link_to tag.name, hash_tag_path(tag) }.join(', ').html_safe %>
+      <%= show_hash_tags(question) %>
     </div>
   </div>
 
