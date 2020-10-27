@@ -1,17 +1,11 @@
 <div class="user-header text-center" style="background-color: #005A55">
   <h1 class="title-medium">
-    <% if @questions.nil? %>
-      Данный хештег #<%= @hash_tag.name %> еще не был использован
-    <% else %>
-      Список вопросов для хештега #<%= @hash_tag.name %>
-    <% end %>
+    Список вопросов для хештега #<%= @hash_tag.name %>
   </h1>
 </div>
 
-<% if @questions.present? %>
-  <div class="user-questions buffer-both">
-    <div class="questions-list">
-      <%= questions_list(@questions) %>
-    </div>
+<div class="user-questions buffer-both">
+  <div class="questions-list">
+    <%= questions_list(@questions) %>
   </div>
-<% end %>
+</div>
