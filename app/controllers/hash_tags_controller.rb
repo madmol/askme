@@ -2,21 +2,16 @@ class HashTagsController < ApplicationController
   before_action :load_tag
 
   def show
+    if @hash_tag.blank?
+      render_404
+    else
+      @questions = @hash_tag.questions
+    end
   end
 
   private
 
   def load_tag
-    @hash_tag = HashTag.find_by(name: params[:name])
-    @questions =
-      if @hash_tag.blank?
-        @hash_tag = HashTag.new(name: params[:name])
-        nil
-      elsif @hash_tag.questions.present?
-        @hash_tag.questions
-      else
-        @hash_tag.destroy
-        nil
-      end
+    @hash_tag = HashTag.with_questions.find_by(name: params[:name])
   end
 end
