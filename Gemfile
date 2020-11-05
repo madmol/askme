@@ -7,6 +7,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'rails_12factor'
 gem 'uglifier'
+gem 'recaptcha', require: 'recaptcha/rails'
 
 # Use Puma as the app server
 # gem 'puma', '~> 4.1'
